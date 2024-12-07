@@ -6,7 +6,6 @@ import rightTreeImage from '../../assets/About/l2.png'; // Right tree image
 import rightTree from '../../assets/About/r2.png';
 import leftTree from '../../assets/About/r1.png';
 
-
 const About1 = () => {
   return (
     <div className="relative bg-white"> {/* Set the background color to white */}
@@ -17,29 +16,30 @@ const About1 = () => {
         </h1>
 
         {/* Section with Before and After Images (Same Content) */}
-        <div className="relative flex items-center justify-center gap-20 mb-12"> {/* Added gap between images */}
+        <div className="relative flex items-center justify-center gap-8 sm:gap-16 lg:gap-20 mb-12"> {/* Adjusted gap for responsiveness */}
           
           {/* Before Image */}
           <div className="relative lg:w-1/3 xl:w-[500px] z-10">
             <img
               src={backgroundImage} // Before image
               alt="Before Impact"
-              className="h-[500px] rounded-lg shadow-lg"
+              className="h-[500px] rounded-lg shadow-lg w-full"
             />
             
-            {/* Right Tree Image - Positioned behind the After image */}
-            <div className="absolute right-[-50px]  z-0">
+            {/* Left Tree Image - Positioned behind the Before image */}
+            <div className="absolute right-[-50px] z-0">
               <img
-                src={leftTreeImage} // Right tree image
-                alt="Right Tree"
+                src={leftTreeImage} // Left tree image
+                alt="Left Tree"
                 className="w-[150px] mt-[-200px] h-[200px] ml-10 mr-10 object-cover"
               />
             </div>
-             {/* Right Tree Image - Positioned behind the After image */}
-             <div className="absolute left-[-50px]  z-0">
+            
+            {/* Right Tree Image - Positioned behind the Before image */}
+            <div className="absolute left-[-50px] z-0">
               <img
-                src={leftTree } // Right tree image
-                alt="left Tree"
+                src={leftTree} // Left tree image
+                alt="Left Tree"
                 className="w-[100px] mt-[-180px] h-[180px] ml-10 object-cover"
               />
             </div>
@@ -62,23 +62,24 @@ const About1 = () => {
             <img
               src={beforeAfterImage} // After image
               alt="After Impact"
-              className="w-[900px]  h-[500px] rounded-lg shadow-lg"
+              className="w-[900px] h-[500px] rounded-lg shadow-lg w-full"
             />
             
-            {/* Right Tree Image - Positioned behind the After image */}
-            <div className="absolute right-[-50px]  z-0">
+            {/* Left Tree Image - Positioned behind the After image */}
+            <div className="absolute right-[-50px] z-0">
               <img
                 src={rightTree} // Right tree image
                 alt="Right Tree"
                 className="w-[150px] mt-[-180px] h-[200px] mr-10 object-cover"
               />
             </div>
-             {/* Right Tree Image - Positioned behind the After image */}
-             <div className="absolute left-[-50px]  z-0">
+
+            {/* Right Tree Image - Positioned behind the After image */}
+            <div className="absolute left-[-50px] z-0">
               <img
                 src={rightTreeImage} // Right tree image
-                alt="left Tree"
-                 className="w-[100px] mt-[-160px] h-[100px] ml-10 mb-[200px] object-cover"
+                alt="Right Tree"
+                className="w-[100px] mt-[-160px] h-[100px] ml-10 mb-[200px] object-cover"
               />
             </div>
 

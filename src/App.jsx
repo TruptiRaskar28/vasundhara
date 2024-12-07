@@ -3,9 +3,11 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Layout/Navbar';
 import Footer from './components/layout/Footer';
 import Home from './components/Home/Home';
+import Events from './components/Home/Events';
 import Home2 from './components/Home/Home2';
 import Home3 from './components/Home/Home3';
 import Home4 from './components/Home/Home4';
+import Home5 from './components/Home/Home5';
 import Aboutus from './components/Aboutus/Aboutus';
 import Team from './components/Aboutus/Team';
 import TeamPage from './components/Aboutus/TeamPage';
@@ -30,16 +32,18 @@ import Gallery from './components/Gallery/Gallery';
 import './index.css'; // TailwindCSS styles
 import Contact from './components/Contact/Contactus';
 import Contact1 from './components/Contact/Contact1';
+// import Navbar1 from './components/Layout/Navbar1';
 
 function App() {
   return (
     <Router>
+      {/* <Navbar1/> */}
       <Navbar />
       <Routes>
-        <Route path="/" element={<><Home /><Home2 /><Home3 /><Home4 /></>} />
+        <Route path="/" element={<><Home /><Events /><Home3/><Home2 /><Home4 /><Home5 /></>} />
         
         {/* Render both Home and Home2 on the /home route */}
-        <Route path="/home" element={<><Home /><Home2 /><Home3 /><Home4 /></>} />
+        <Route path="/home" element={<><Home /><Events /><Home3 /><Home2 /><Home4 /></>} />
         
         {/* Aboutus routes */}
         <Route path="/aboutus" element={<><Aboutus /><Team /><TeamPage /></>} />

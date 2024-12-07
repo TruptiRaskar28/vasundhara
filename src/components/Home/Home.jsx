@@ -1,39 +1,72 @@
 import React from 'react';
-import homeImage from '../../assets/home.png'; // Import the background image properly
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { useNavigate } from 'react-router-dom';
 
+import image1 from '../../assets/home.png';
+import image4 from '../../assets/treepl.png';
+import image3 from '../../assets/aware.png';
+import './Home.css';
 
-function Home() {
+const Home = () => {
+  const navigate = useNavigate();
+
+  const slides = [
+    {
+      imageUrl: image1,
+    },
+    {
+      imageUrl: image4,
+    },
+    {
+      imageUrl: image3,
+    },
+  ];
+
+  const handleKnowMoreClick = () => {
+    navigate('/preservice');
+  };
+
   return (
-    
-    <section className="relative py-16">
-      {/* Background Image */}
-      <div className="absolute top-0 left-0 w-full h-full min-h-screen">
-        <img
-          src={homeImage} // Use the imported background image
-          alt="Background"
-          className="w-full h-full object-cover"
-          style={{ width: '2000px', height: '600px', top: '100px' }} // Set specific size and position
-        />
-      </div>
-      
-
-      {/* Content Section */}
-      <div className="relative z-10 max-w-screen-xl mx-auto px-4 text-left">
-        {/* Left-Aligned Text */}
-        <div className="absolute left-8 top-1/4 text-white">
-          <h1 className="text-5xl font-extrabold mb-4">
-            VASUNDHARA <br /> PARYAVARAN SAVRDHAN SANSTHA
-          </h1>
-          <p className="text-lg font-semibold mb-6">
-            Look deep into nature, and you will understand everything better.
-          </p>
-          
-          {/* Logo */}
-         
-        </div>
-      </div>
-    </section>
+    <div className="w-full h-screen relative overflow-hidden  lg:mt-0 sm:mt-5">
+      <Swiper
+        spaceBetween={0}
+        slidesPerView={1}
+        navigation={true}
+        pagination={{ clickable: true }}
+        loop={true}
+        autoplay={{ delay: 3000 }}
+        modules={[Navigation, Pagination, Autoplay]}
+        className="customSwiper"
+      >
+        {slides.map((slide, index) => (
+          <SwiperSlide key={index}>
+            <div
+              className="relative w-full h-[40vh] md:h-[90vh] bg-cover bg-center swiper-slide-background"
+              style={{ backgroundImage: `url(${slide.imageUrl})` }}
+            >
+              <div className="absolute inset-0 flex justify-center items-center px-4">
+                <div className="text-center">
+                  <h2 className="text-md sm:text-xl md:text-4xl font-semibold mb-2 md:mb-3 animate__animated animate__zoomIn">
+                    {slide.title}
+                  </h2>
+                  <p className="text-sm sm:text-md md:text-xl mb-3 animate__animated animate__zoomIn">
+                    {slide.description}
+                  </p>
+                  <div className="text-3xl sm:text-5xl font-bold text-white animate__animated animate__zoomIn welcome-text">
+                    WELCOME TO VASUNDHARA FOUNDATION
+                  </div>
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
   );
-}
+};
 
 export default Home;

@@ -9,7 +9,7 @@ import h5 from '../../assets/h5.png';
 
 const WhatWeStandFor = () => {
   return (
-    <section className="mt-[500px] py-16 bg-[#F6F6F6] px-6 md:px-12"> {/* Padding on left and right */}
+    <section className="mt-[10px] py-16 bg-[#F6F6F6] px-6 md:px-12"> {/* Padding on left and right */}
       {/* Title Section */}
       <h2 className="text-4xl font-bold text-center text-blue-800 mb-8">
         What We Stand For
@@ -24,7 +24,7 @@ const WhatWeStandFor = () => {
       </div>
 
       {/* Image Section */}
-      <div className="flex justify-center gap-8 mt-12 overflow-x-auto"> {/* Added overflow-x-auto for horizontal scrolling if necessary */}
+      <div className="flex justify-center gap-8 mt-12 overflow-x-auto flex-wrap justify-center"> {/* Added flex-wrap for mobile responsiveness */}
         {/* Image 1 */}
         <div className="w-full sm:w-1/2 md:w-1/5 flex justify-center animate__animated animate__fadeIn animate__delay-1s">
           <img
@@ -74,4 +74,4 @@ const WhatWeStandFor = () => {
   );
 };
 
-export default WhatWeStandFor; 
+export default WhatWeStandFor;

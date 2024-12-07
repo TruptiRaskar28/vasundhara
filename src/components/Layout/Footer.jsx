@@ -1,77 +1,64 @@
-import React from 'react';
-import footerBackground from '../../assets/footer.png'; // Path to your background image
-import logo from '../../assets/logo.png'; // Path to your logo
+import React from "react";
+import backgroundImage from '../../assets/footer.png'; // Import your background image
+import logo from '../../assets/logo.png'; // Import your logo image
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear(); // Get the current year
+
   return (
     <footer
-      className="relative bg-cover   bg-center py-8 px-6 text-black"
       style={{
-        backgroundImage: `url(${footerBackground})`,
-        backgroundSize: 'cover', // Ensures the image covers the container
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: '1800px 1500px', // Ensures the image covers the entire footer
         backgroundPosition: 'center',
-        height: '420px', // Reduced height for the footer
-        width: '100%', // Set the width to 100% of the container's width
+        backgroundAttachment: 'fixed', // Optional: Adds parallax effect for better background scrolling
+        color: 'white', // Text color for better visibility on dark backgrounds
+        padding: '20px 0', // Adds padding to the footer for spacing
       }}
     >
-      {/* Logo on the left */}
-      <div className="absolute top-2 left-4">
-        <img src={logo} alt="Vasundhara Logo" className="w-[50px] h-[80px]" />
-      </div>
+      <div className=" bg-opacity-70 py-4 text-black">
+        <div className="container px-4 mx-auto">
+          <div className="-mx-4 flex flex-wrap justify-between">
+            <div className="px-4 my-4 w-full xl:w-1/5">
+              <a href="/" className="block w-56 mb-10">
+                <img src={logo} alt="Vasundhara Logo" className="w-20 -mt-10"  />
+              </a>
+              <p className="text-justify">
+                Vasundhara is committed to conserving nature through reforestation, plant preservation,
+                and sustainable initiatives. Join us in creating a greener, healthier planet for future generations.
+              </p>
+            </div>
 
-      {/* Footer Content */}
-      <div className="max-w-screen-xl mx-auto text-center md:text-left grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-        
-        {/* Information Section */}
-        <div>
-          <h3 className="text-2xl font-semibold mb-4">Information</h3>
-          <ul>
-            <li className="mb-2"><a href="/" className="hover:text-green-400">Home</a></li>
-            <li className="mb-2"><a href="/impact" className="hover:text-green-400">Impact</a></li>
-            <li className="mb-2"><a href="/faq" className="hover:text-green-400">FAQ</a></li>
-            <li className="mb-2"><a href="/about" className="hover:text-green-400">About</a></li>
-            <li className="mb-2"><a href="/media" className="hover:text-green-400">Media</a></li>
-            <li className="mb-2"><a href="/gallery" className="hover:text-green-400">Gallery</a></li>
-            <li className="mb-2"><a href="/tree-in-school" className="hover:text-green-400">Tree in School</a></li>
-            <li className="mb-2"><a href="/projects" className="hover:text-green-400">Projects</a></li>
-          </ul>
-        </div>
+            <div className="px-4 my-4 w-full sm:w-auto">
+              <h2 className="inline-block text-2xl pb-4 mb-4 border-b-4 border-blue-600">
+                About Us
+              </h2>
+              <ul className="leading-8">
+                <li><a href="#" className="hover:text-blue-400">Our Mission</a></li>
+                <li><a href="#" className="hover:text-blue-400">Our Vision</a></li>
+                <li><a href="#" className="hover:text-blue-400">Team</a></li>
+                <li><a href="#" className="hover:text-blue-400">Contact Us</a></li>
+              </ul>
+            </div>
 
-        {/* Other Section */}
-        <div>
-          <h3 className="text-2xl font-semibold mb-4">Other</h3>
-          <ul>
-            <li className="mb-2"><a href="/get-involved" className="hover:text-green-400">Get Involved</a></li>
-            <li className="mb-2"><a href="/tree-plantation" className="hover:text-green-400">Tree Plantation</a></li>
-            <li className="mb-2"><a href="/contact" className="hover:text-green-400">Contact</a></li>
-          </ul>
-        </div>
-
-        {/* Support Section */}
-        <div>
-          <h3 className="text-2xl font-semibold mb-4">Support</h3>
-          <ul>
-            <li className="mb-2"><a href="/help-center" className="hover:text-green-400">Help Center</a></li>
-          </ul>
-        </div>
-
-        {/* Contact Info Section */}
-        <div>
-          <h3 className="text-2xl font-semibold mb-4">Contact Info</h3>
-          <p className="mb-4">
-            Vasundhara is committed to conserving nature through reforestation, plant preservation, and sustainable initiatives. Join us in creating a greener, healthier planet for future generations.
-          </p>
-          <p className="mb-2">Phone: +91 9766539071</p>
-          <p className="mb-2">Email: <a href="mailto:support@vasuundhara.com" className="hover:text-green-400">support@vasuundhara.com</a></p>
-          <p className="mb-2">Email: <a href="mailto:kishor@vasuundhara.com" className="hover:text-green-400">kishor@vasuundhara.com</a></p>
-          <p>Address: Vasundhara Paryavaran Sanvardhan Sanstha - Gat No- 115/4, Dhamane Gaonvathan, Tal- Maval, Dist- Pune – 410506</p>
+            <div className="px-4 my-4 w-full sm:w-auto xl:w-1/5">
+              <h2 className="inline-block text-2xl pb-4 mb-4 border-b-4 border-blue-600">
+                Connect With Us
+              </h2>
+              <div className="mt-4">
+                <ul>
+                  <li>Phone: +91 9766539071</li>
+                  <li>Email: <a href="mailto:support@vasuundhara.com">support@vasuundhara.com</a></li>
+                  <li>Address: Vasundhara Paryavaran Sanvardhan Sanstha - Gat No- 115/4, Dhamane Gaonvathan, Tal- Maval, Dist- Pune – 410506</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-
-      {/* Footer Bottom Text */}
-      <div className="text-center mt-6">
-        <p className="text-sm text-gray-300">
-          &copy; {new Date().getFullYear()} Vasundhara Paryavaran Sanvardhan Sanstha. All Rights Reserved.
+      <div className="py-4 text-center text-gray-400">
+        <p>
+          &copy; {currentYear} Vasundhara. All Rights Reserved.
         </p>
       </div>
     </footer>

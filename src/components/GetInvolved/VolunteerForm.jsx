@@ -1,7 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
+import emailjs from 'emailjs-com'; // Import emailjs
+
 import Imges1 from '../../assets/volunteer.png'; // Correct image import
 
 const VolunteerForm = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    contact: '',
+    message: '',
+  });
+  const [sending, setSending] = useState(false);
+
+  // Handle form data changes
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  // Handle form submission
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSending(true);
+
+    emailjs
+      .sendForm('your_service_id', 'your_template_id', e.target, 'your_user_id') // Replace with your EmailJS credentials
+      .then(
+        (result) => {
+          console.log(result.text);
+          alert('Message sent successfully!');
+          setSending(false);
+        },
+        (error) => {
+          console.log(error.text);
+          alert('Failed to send message.');
+          setSending(false);
+        }
+      );
+  };
+
   return (
     <section className="bg-[#f6f6f6] py-12">
       {/* New Heading */}
@@ -11,12 +50,12 @@ const VolunteerForm = () => {
 
       {/* Combined Div */}
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row  items-center justify-center"> {/* Flex layout for both form and image */}
+        <div className="flex flex-col lg:flex-row items-center justify-center"> {/* Flex layout for both form and image */}
 
           {/* Left Side Form */}
           <div className="bg-white p-8 rounded-lg shadow-xl flex flex-col justify-center items-center w-full lg:w-[600px] h-[650px]">
             <h3 className="text-2xl font-semibold text-center mb-6 text-gray-700">Join Us In Our Green Moment!</h3> {/* Form heading */}
-            <form action="#" method="POST" className="w-full">
+            <form onSubmit={handleSubmit} className="w-full">
               <div className="mb-6">
                 <label htmlFor="name" className="block text-lg font-medium text-gray-700">Name</label>
                 <input
@@ -25,6 +64,8 @@ const VolunteerForm = () => {
                   name="name"
                   placeholder="Enter your name"
                   className="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                  value={formData.name}
+                  onChange={handleChange}
                 />
               </div>
 
@@ -36,6 +77,8 @@ const VolunteerForm = () => {
                   name="email"
                   placeholder="Enter your email"
                   className="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                  value={formData.email}
+                  onChange={handleChange}
                 />
               </div>
 
@@ -47,6 +90,8 @@ const VolunteerForm = () => {
                   name="contact"
                   placeholder="Enter Contact Number"
                   className="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                  value={formData.contact}
+                  onChange={handleChange}
                 />
               </div>
 
@@ -58,6 +103,8 @@ const VolunteerForm = () => {
                   placeholder="Your Message"
                   rows="4"
                   className="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                  value={formData.message}
+                  onChange={handleChange}
                 ></textarea>
               </div>
 
@@ -66,8 +113,9 @@ const VolunteerForm = () => {
                   type="submit"
                   style={{ backgroundColor: '#073E06' }} // Custom green color
                   className="text-white px-6 py-3 rounded-lg font-medium hover:bg-green-600 transition duration-300"
+                  disabled={sending}
                 >
-                  Send
+                  {sending ? 'Sending...' : 'Send'}
                 </button>
               </div>
             </form>

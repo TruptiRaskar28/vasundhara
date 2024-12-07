@@ -1,0 +1,50 @@
+/* Default layout for desktop (no changes needed here) */
+footer .container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+footer .container > .social-media {
+  display: flex;
+}
+
+footer .container > .nav-links {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two columns for desktop */
+  gap: 20px;
+}
+
+/* Mobile view: Adjust navigation links into two separate columns */
+@media (max-width: 640px) {
+  footer .container {
+    flex-direction: column; /* Stack content vertically */
+    align-items: center; /* Center content horizontally */
+  }
+
+  footer .nav-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns for the links */
+    gap: 20px; /* Space between columns */
+    width: 100%; /* Make sure the grid takes full width */
+  }
+
+  /* Ensure that the first 4 links are on the left column and the next 3 links are on the right column */
+  footer .nav-links > div:nth-child(1),
+  footer .nav-links > div:nth-child(2),
+  footer .nav-links > div:nth-child(3),
+  footer .nav-links > div:nth-child(4) {
+    grid-column: 1; /* First column */
+  }
+
+  footer .nav-links > div:nth-child(5),
+  footer .nav-links > div:nth-child(6),
+  footer .nav-links > div:nth-child(7) {
+    grid-column: 2; /* Second column */
+  }
+
+  /* Optionally, ensure that Gallery is aligned with "Home" (if necessary) */
+  footer .nav-links > div:nth-child(5) {
+    grid-column: 2; /* Gallery on the second column */
+  }
+}
